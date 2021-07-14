@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //길이가 다른 서로 다른 A,B,C 세 개의 막대 길이가 주어지면 이 세 막대로 삼각형을 만들 수 있으면 "YES" 를 출력하고, 만들수 없으면 "NO"를 출력
+        //첫 번째 줄에 100이하의 서로 다른 A,B,C막대의 길이가 주어진다.
+        //삼각형이 되는 조건 작은 두변의 합이 제일긴 변의 보다 커야한다 a+b > c 성립이 되야 한다.
+        solution1 = (a,b,c) =>{
+            let side1;
+            let side2;
+            let long;
+            if(a>b) {
+                long=a
+                side1=b
+                side2=c
+            }else {
+                long=b
+                side1=a
+                side2=c
+            }
+            if(c>long){
+                long=c
+                side1=a
+                side2=b
+            }
+            
+            if(side1+side2<=long){
+                return answer='NO'
+            }else{
+                return answer='YES'
+            }
+        }
+        console.log('내풀이:'+solution1(6,7,11))
+
+        solution2 = (a,b,c) =>{
+            let answer="YES",max;
+            let sum=a+b+c
+            if(a>b) max=a
+            else max=b
+            if(c>max) max=c
+            if((sum-max)<=max) answer='NO'
+            return answer
+        }
+        console.log('강사풀이:'+solution2(6,7,11))
+    </script>
+</body>
+</html>

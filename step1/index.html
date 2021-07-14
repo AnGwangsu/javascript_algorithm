@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        solution1 = (a,b,c) =>{
+            let answer;
+            //강사님이 푼 풀이
+            if(a<b) answer=a
+            else answer=b
+            if(c<answer) answer=c
+
+            return answer
+        }
+        console.log('강사 풀이:'+solution1(6,5,11))
+
+
+        solution2 = (a,b,c) =>{
+            let answer;
+             // //내가 푼 풀이
+             if(a<b){
+                if(a<c){
+                    answer=a
+                }else{
+                    answer=c
+                }
+            }else{
+                if(b<c){
+                    answer=b
+                }else{
+                    answer=c
+                }
+            }
+            return answer
+        }
+        console.log('내 풀이:'+solution2(6,5,11))
+    </script>
+</body>
+</html>
