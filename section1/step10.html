@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //대문자로 이루어진 영단어가 입력되면 단어에 포함된 'A'를 모두 '#'으로 바꾸어 출력하는 프로그램
+        str = 'BANANA'
+        solution1 = (str)=>{
+            var answer='';
+            var arr = str.split("")  //split함수는 문자열 자르기 함수
+            
+            arr.forEach((o,i)=>{ //배열을 돌면서 A의 문자를 #으로 변경
+                if(arr[i]==='A'){
+                    arr[i]='#'
+                }
+            })
+            arr.forEach(o => { //배열을 다시 문자로 합치기
+                answer+=o
+            });
+
+            return answer
+        }
+        console.log('출력:'+solution1(str))
+
+        solution2 = (str) =>{
+            var answer=''
+            // //1번
+            for(let x of str){ //문자를 반본문돌려
+                if(x==='A'){ //A를 판별해서 answer에 문자열을 하나씩 더한다.
+                    answer+='#' 
+                }else{
+                    answer+=x
+                }
+            }
+            //2번
+            answer = str.replace(/A/g,'#')//내장함수,뒤에 g를 붙여야 모두 바뀐다
+            return answer
+        }
+        console.log('답:'+solution2(str))
+    </script>
+</body>
+</html>

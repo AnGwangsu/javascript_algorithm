@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //가운데 문자 출력
+        //소문자로 된 단어(문자열)가 입력되면 그 단어의 가운데 문자를 출력하는 프로그램을 작성하세요. 단 단어의 길이가 짝수일 경우 가운데 2개의 문자를 출력
+        var str = 'monda'
+        solution1 = (str) =>{
+            var answer = ''
+            var mid = Math.floor(str.length/2) //주어진 숫자와 같거나 작은 정수중에서 가장 큰수를 반환 ex)5.95 = 5  5.05 =5  -5.05 = -6
+            if(str.length%2===0) answer=str.substr(mid-1,2) //짝수는 두개
+            else answer=str.substr(mid,1) //홀수는 하나
+
+            return answer
+        }
+        console.log(solution1(str))
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //한 개의 문자열을 입력받아 해당 문자열에 알파벳 대문자가 몇 개 있는지 알아내는 프로그램을 작성
+        var str = 'KoreaTimeGood'
+        solution1 = (str) =>{
+            let answer = 0;
+            for(let x of str){
+                if(x==x.toUpperCase()){ //문자열 == 대문자 이면 answer의 카운트 증가
+                    answer++
+                }
+            }
+            return answer;
+        }
+        console.log(solution1(str))
+
+        
+    </script>
+</body>
+</html>
