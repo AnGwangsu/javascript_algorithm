@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //자동차 10부제 차량 1의자리 수와, 날짜의 1의자리 수가 일치하면 해당 금지
+        //날짜의 일의 자리 숫자,7대의 자동차 번호의 끝 두 자리 숫자가 주어짐
+        arr = [25,23,11,47,53,17,33]
+        date = 3 
+        solution1 = (date,arr) =>{
+            let answer = 0;
+            for(let i =0; i<arr.length; i++){
+                if(arr[i]%10 == date){
+                    answer++
+                }
+            }
+            return answer
+        }
+        console.log("위반차량대수:"+solution1(date,arr))
+    </script>
+</body>
+</html>

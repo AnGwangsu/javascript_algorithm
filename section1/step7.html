@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //7개의 자연수가 주어질 때, 이들 중 홀수 인 자연수들을 모두 골라 그 합을 구하고, 고른 홀수들중 최소값을 찾는 프로그램을 작성하세요.
+        //예를 들어,7개의
+        arr = [12,77,38,41,53,92,85]
+        
+        solution1 = (arr) =>{
+            let answer;
+            var odd = []
+            var sum =0
+            for(var i =0; i<arr.length; i++){
+                if(arr[i]%2 !==0){
+                    odd.push(arr[i])
+                }
+            }
+            for(var i=0; i<odd.length; i++){
+                sum+=odd[i]
+            }
+            console.log('홀수 합:'+sum)
+            answer=Math.min(...odd)
+            return answer
+        }
+        console.log('최솟값'+solution1(arr))
+
+
+        //잘 이해안됨 강의 다시 보기
+        solution2 = (arr) =>{
+            let answer = [];
+            let sum=0 , min=0
+            for(let x of arr){
+                if(x%2==1){ //홀수는 2로 나누었을때 1이 남는다
+                    sum+=x
+                    if(x<min) min=x
+                }
+            }
+            answer.push(sum)
+            answer.push(min)
+            return answer
+        }
+        console.log('최솟값'+solution2(arr))
+
+    </script>
+</body>
+</html>

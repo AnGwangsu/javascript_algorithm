@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //내장함수로 최솟값, 최댓값 구하기
+        solution = (arr) =>{
+            let min,max;
+            
+            min=Math.min(...arr) //배열 인자를 넣어야한다. ex)arr[0],arr[1] 이런식으로 들어간다.
+            max=Math.max(...arr)
+
+            return console.log('최솟값:'+min +' ,  최댓값:'+max)
+        }
+        var arr = [11,10,8,15,7,3,5]
+        solution(arr)
+    </script>
+</body>
+</html>
