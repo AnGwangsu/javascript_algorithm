@@ -17,15 +17,35 @@
         
         arr =[20,7,23,19,10,15,25,8,13]
         solution1 = (arr) =>{
-            let answer =[]
+            let answer =arr
             let sum =0
             arr.forEach(o=>sum+=o) //배열 전체의 요소 합을 알아낸다
-            console.log(sum)
-            
+            for(var i=0; i<arr.length-1; i++){
+                for(var j=i+1; j<arr.length; j++){
+                    if(sum-(arr[i]+arr[j])===100){
+                        arr.splice(j,1) 
+                        arr.splice(i,1)
+                    }
+                }
+            }
             return answer
         }
         console.log(solution1(arr))
 
+        solution2 = (arr) =>{
+            var answer = arr
+            let sum = arr.reduce((a,b)=>a+b, 0) //첫번째 인자는 누적값, b는 현재값, 뒤에 파라미터는 초깃값
+            for(let i=0; i<8; i++){
+                for(let j=i+1; j<9; j++){
+                    if(sum-(arr[i]+arr[j])===100){
+                        arr.splice(j,1) //뒤에 인덱스부터 지운다
+                        arr.splice(i,1) 
+                    }
+                }
+            }
+            return answer
+        }
+        console.log(solution2(arr))
     </script>
 </body>
 </html>
