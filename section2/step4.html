@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //OX문제는 맞거나 틀린 두 경우의 답을 가지는 문제를 말한다. 여러 개의 OX 문제로 만들어진
+        //시험에서 연속적으로 답을 맞히는 경우에는 가산점을 주기 위해서 다음과 같이 점수를 계산을 하기로 하였다.
+        //1번 문제가 맞는 경우에는 1점으로 계산한다. 앞의 문제의 답이 맞는 경우에서 두 번째 문제는 2점 세 번째 문제는 3점
+        //K번 째 문제는 K점으로 계산한다. 틀린문제는 0점으로 계산한다.
+
+        var arr = [1,0,1,1,1,0,0,1,1,0]
+        //내풀이
+        solution1 = (arr) =>{
+            var answer=0
+            var score=0
+            var s = []
+            for(var i=0; i<arr.length; i++){
+                if(arr[i]===1){ //배열인자가 정답일경우를 예외처리한다
+                    if(arr[i-1]===1)score+=1 //만약 지금인자 전에도 정답이었다면 score를 1점을 누적
+                    else score=1 //이전 인자가 정답이 아니면 1점
+                }else{
+                    score=0
+                }
+                s.push(score)
+                answer+=score
+            }
+            console.log(s)
+            return answer;
+        }
+        console.log(solution1(arr))
+
+        //강의 풀이
+        solution2 = (arr) =>{
+            var answer =0, cnt=0
+            for(let x of arr){
+                if(x===1){
+                    cnt++ //정답이면 계속 증가
+                    answer+=cnt
+                }else {
+                    cnt=0 //정답이 아니면 초기화
+                }
+            }
+            return answer
+        }
+
+        console.log(solution2(arr))
+    </script>
+</body>
+</html>
