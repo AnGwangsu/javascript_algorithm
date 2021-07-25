@@ -21,15 +21,21 @@
         solution1 = (arr) =>{
             var answer = 0
             let n = arr.length
-            let sum1=sum2=0 //col열 row행
+            let row=col=0 //col열 row행
             for(let i=0; i<n; i++){
-                sum1=sum2=0
+                row=col=0//누적값 초기화
                 for(let j =0; j<n; j++){
-                    sum1+=arr[i][j]
-                    sum2+=arr[j][i]
+                    row+=arr[i][j] //행의 합
+                    col+=arr[j][i] //열의 합
                 }
-                answer=Math.max(answer,sum1,sum2)
+                answer=Math.max(answer,row,col)//행의 합, 열의 합, 최댓값중 다시 최댓값을 구함
             }
+            row=col=0//행과열의 합 값 초기화
+            for(let i=0; i<n; i++){
+                row+=arr[i][i] //왼쪽 대각선
+                col+=arr[i][n-i-1]//오른쪽 대각선
+            }
+            answer=Math.max(answer,row,col)//두대각선과 최댓값중의 최댓값을 구함
             return answer
         }
         console.log(solution1(arr))
