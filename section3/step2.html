@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //앞에서 읽을 때나 뒤에서 읽을 때나 같은 문자열을 팰린드롬이라고 합니다.
+        //문자열이 입력되면 해당 문자열이 팰린드롬이면 'YES', 아니면 'NO'를 출력하는 프로그램을 작성
+        //단 회문을 검사할 때 알파벳만 가지고 회문을 검사하며, 대소문자를 구분하지 않습니다.
+        //알파벳 이외의 문자들은 무시합니다.
+        var str = 'found7, time: study; Yduts; emit, 7Dnuof'
+        solution1 = (str) =>{
+            var answer = 'YES'
+            str = str.toLowerCase().replace(/[^a-z]/g,'') //^는 부정 소문자가 아닌거는 빈문자열로 바꿔라
+            if(str.split('').reverse().join('')!==str) return 'NO'
+
+            return answer
+        }
+        console.log(solution1(str))
+    </script>
+</body>
+</html>

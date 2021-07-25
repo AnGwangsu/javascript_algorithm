@@ -23,6 +23,25 @@
             return answer
         }
         console.log(solution1(str))
+
+        solution2 = (str) => {
+            let answer ='YES'
+            str = str.toLowerCase()
+            let len = str.length
+            for(let i =0; i<Math.floor(len/2); i++){ //Math.floor 주어진 숫자와 같거나 작은 정수 중에서 가장 큰 수를 반환  =>작은수를 리턴 (몫나누기)
+                if(str[i]!==str[len-i-1]) return "NO"
+            }
+            return answer
+        }
+        console.log(solution2(str))
+
+        solution3 = (str) =>{
+            var answer = 'YES'
+            str = str.toLowerCase()
+            if(str.split('').reverse().join('')!==str) return 'NO'  //join함수는 split으로 쪼개진 배열을 다시 하나의 문자열로 바꿈
+            return answer
+        }
+        console.log(solution3(str))
     </script>
 </body>
 </html>
