@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //N개의 자연수가 입력되면 각 자연수를 뒤집은 후 그 뒤집은 수가 소수이면 그 소수를 출력하는 프로그램을 작성
+        //예를 들어 32를 뒤집으면 23이고, 23은 소수이다. 그러면 23을 출력한다.
+        //단 910을 뒤집으면 19로 숫자화 해야 한다. 첫 자리부터의 연속된 0은 무시한다.
+        //*소수는 1과 자기 자신외에 나누어 지지 않는 1이와의 정수
+        var arr = [32,55,62,20,250,370,200,30,100]
+        solution1 = (arr) => {
+            let answer = []
+            let pn = []
+            let tmp
+            for(let x of arr){
+                tmp=parseInt(x.toString().split('').reverse().reduce((a,b)=>a+b))
+                for(var i=1; i<=tmp; i++){
+                    if(tmp%i===0) pn.push(i)                  
+                }
+                if(pn.length===2) answer.push(tmp)
+                pn=[]
+            }
+            return answer
+        }
+        console.log(solution1(arr))
+
+        //강의 해설(다시 한번 보기 숫자 뒤집기 활용)
+        solution2 = (arr) => {
+            let answer = []
+            for(let x of arr){
+                let res=0//뒤집어진수 저장
+                while(x){//x가 0이되면 멈춤
+                    let t = x%10 //10으로 나눈 나머지
+                    res = res*10+t //각 자리수를 누적합
+                    x=parseInt(x/10)
+                }
+                if(isPrime(res)) answer.push(res) //소수 찾는 내장함수
+            }
+            return answer
+        }
+        console.log(solution2(arr))
+    </script>
+</body>
+</html>

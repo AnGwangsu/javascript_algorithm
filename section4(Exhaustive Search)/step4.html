@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //완전탐색
+        //선생님은 올해 졸업하는 반 학생들에게 졸업선물을 주려고한다
+        //학생들에게 인터넷 쇼핑몰에서 각자 원하는 상품을 골라 그 상품의 가격과 배송비를 제출하라
+        //선생님이 가지고 있는 예산은 한정되어 있다.
+        //현재 예산으로 최대 몇 명의 학생에게 선물을 사줄 수 있는지 구하는 프로그램
+        //선생님은 상품 하나를 50% 할인해서(반 가격)살 수 있는 쿠폰을 가지고 있다. 배송비는 할인에 포함되지 않는다.
+        //상품 가격은 짝수로만 가능
+
+        //상품+배송비의 합이 28이 넘으면 합산 x , 가장 비싼 물품을 50% 적용
+        var account = 28 //예산
+        var arr = [ //학생수
+            [6,6], // 상품가격, 배송비
+            [2,2],
+            [4,3],
+            [4,5],
+            [10,3]    
+        ]
+        //총 비용을 기준으로 정렬
+        //모든 경우에 50%를 모두 적용해서 최적의 답을 찾아냄
+        solution1 = (arr,acc) => {
+            var answer = 0
+            var n = arr.length
+            arr.sort((a,b)=>(a[0]+a[1])-(b[0]+b[1])) //오름차순 정렬 배열요소의 합을 비교, sort함수 찾아보기
+            for(var i=0; i<n; i++){
+                let money=acc-(arr[i][0]/2)+arr[i][1]//모든상품에 할인을 적용해본다.
+                let cnt = 1
+                for(let j=0; j<n; j++){//할인된 상품을 기준으로 다시 모든 상품을 비교
+                    if(j!==i && (arr[j][0]+arr[j][1])>money) break//사려는 상품이 남은 예산 보다 크면 break
+                    if(j!==i && (arr[j][0]+arr[j][1])<=money){//j상품은 i와 같으면 안되고 나머지 상품의 합은 남은가격보다 작거나 같아야한다
+                        money-=(arr[j][0]+arr[j][1])
+                        cnt++
+                    } 
+                }
+                answer=Math.max(answer,cnt) //j가 모두 돌고나면 cnt와 answer값을 비교해서 큰것을 다시 갱신
+            }
+            return answer
+        }
+        console.log(solution1(arr,account))
+    </script>
+</body>
+</html>

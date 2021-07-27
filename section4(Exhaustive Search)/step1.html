@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //N개의 자연수가 입력되면 각 자연수의 자릿수의 합을 구하고, 그 합이 최대인 자연수를 출력하는 프로그램
+        //자릿수의 합이 같은 경우 원래 숫자가 큰 숫자를 답으로 한다.
+        //만약 235 ,1234가 동시에 답이 될수있다면 1234를 답으로 출력 해야한다
+        var arr = [128,460,603,40,521,137,123]
+        // solution1 = (arr) => {
+        //     var answer = 0
+        //     var max = 0
+        //     var sum = 0
+        //     var tmp = 0
+        //     for(var i =0; i<arr.length; i++){
+        //         for(var j = 0; j<arr[i].length; j++){
+        //             sum+=arr[i][j]
+        //             if(max<sum) answer=arr[i]
+        //         }
+        //     }
+        //     return answer
+        // }
+        // console.log(solution1(arr))
+        
+        //강의 풀이
+        solution2 = (arr) => {
+            let answer,max=Number.MIN_SAFE_INTEGER;//아주작은숫자로 초기화
+            for(let x of arr){
+                let sum=0,tmp=x//임시변수
+                while(tmp){//tmp가 0아닐때 실행  tmp가 0이될때까지 반복
+                    sum+=(tmp%10) //10으로 나눈 나머지
+                    tmp=Math.floor(tmp/10) //10으로 나눈 몫을 리턴
+                }
+                if(max<sum){
+                    max=sum
+                    answer=x
+                }else if(max===sum){
+                    answer=Math.max(answer,x)
+                } 
+            }
+            return answer
+        }
+        console.log(solution2(arr))
+
+        solution3 = () => {
+            let answer, max=Number.MIN_SAFE_INTEGER
+            for(let x of arr){
+                let sum = x.toString().split('').reduce((a,b)=>a+parseInt(b),0);
+                if(max<sum){
+                    max=sum
+                    answer=x
+                }else if(sum===max){
+                    answer=Math.max(answer,x)
+                }
+            }
+            return answer
+        }
+        console.log(solution3(arr))
+    </script>
+</body>
+</html>
