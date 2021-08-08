@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //자료구조(스택)
+        //올바른 괄호
+        //괄호가 입력되면 올바른 괄호이면 "YES", 올바르지 않으면 'NO'를 출력합니다.
+        //(())()이것은 괄호의 쌍이 올바르게 위치하는거지만, (()()))은 올바른 괄호가 아니다.
+        //여는 괄호는 push 닫는 괄호는 pop ,올바른 괄호는 배열이 텅비어 있어야한다.
+        var str = '(()(()))())'
+        solution1 = (str) => {
+            var answer = 'YES'
+            var stack = []
+            for(let x of str){
+                if(x==='(') stack.push(x)
+                else {
+                    if(stack.length===0) return 'NO' //닫는 괄호가 더 많을때
+                    stack.pop()
+                }
+            }
+            if(stack.length>0) return 'NO' //여는 괄호가 더 많을때
+            return answer
+        }
+        console.log(solution1(str))
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //개인정보를 지켜라
+        //어떤 이름이던지 앞에 두 글자만 출력하고 뒤에는 *로 마스킹 처리하는 문제
+        var str = '즐라탄이브라히모비치'
+        solution1 = (str) => {
+            var result = str.split('')
+            for(var i=2; i<result.length; i++){
+                result[i]='*'
+            }
+            result=result.join('')
+            return result
+        }
+        console.log(solution1(str))
+    </script>
+</body>
+</html>

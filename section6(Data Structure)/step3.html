@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //카카오 크레인 인형뽑기
+        //게임개발자인 죠르디는 크레인 이형뽑기 기계를 모바일 게임으로 만들려고 한다.
+        //죠르디는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려 한다.
+        //
+        var arr = [
+            [0,0,0,0,0],
+            [0,0,1,0,3],
+            [0,2,5,0,1],
+            [4,2,4,4,2],
+            [3,5,1,3,1]
+        ]
+        var moves = [1,5,3,5,1,2,1,4]
+        solution1 = (arr,moves) =>{
+            var answer=0
+            var stack = [];
+            var tmp;
+            moves.forEach(pos=>{
+                for(var i=0; i<arr.length; i++){
+                    if(arr[i][pos-1]!==0){//인형을 꺼내서 시뮬레이션을 돌림 그리고 한번꺼내면 if문을 빠져나와야한다. 아니면 pos의 열의 모든 곳을 다 돌아버린다.
+                        tmp = arr[i][pos-1] //꺼내서 임시저장
+                        arr[i][pos-1] //꺼낸자리는 0으로 바꿈
+                        if(tmp===stack[stack.length-1]){//방금꺼낸인형과 스택의 제일 위에 인형이 같으면
+                            stack.pop()//인형을 터뜨리고
+                            answer+=2 //answer점수를 증가
+                        }else{
+                            stack.push(tmp)
+                        }
+                        break;
+                    }
+                }
+            })
+            return answer
+        }
+        console.log(solution1(arr,moves))
+    </script>
+</body>
+</html>

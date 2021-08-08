@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //한국나이와 만 나이 구하기
+        //한국이나이 태어날때부터 1살
+        //만 나이는 한국나이에 -1살 현재 날짜가 생일날짜보다 적으면 -2살
+        var age = new Date('1996-10-07')
+        var cureentDate = new Date()
+        solution1 = (age,cur) => {
+            var result = []
+            var myYear = age.getFullYear().toString()
+            var myMonthDay = parseInt(('0' + (age.getMonth() + 1)).slice(-2).toString()+('0' + (age.getDate())).slice(-2))
+            var curYear = cur.getFullYear().toString()
+            var curMonthDay = parseInt(('0' + (cur.getMonth() + 1)).slice(-2).toString()+('0' + (cur.getDate())).slice(-2))
+            result[0]=(curYear-myYear)+1 //한국 나이
+            if(myMonthDay>curMonthDay) result[1]=(curYear-myYear)-1 //만 나이 판별   
+            else result[1]=(curYear-myYear)
+            return result
+        }
+        console.log(solution1(age,cureentDate))
+    </script>
+</body>
+</html>

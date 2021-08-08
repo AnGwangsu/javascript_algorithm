@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //괄호 문자 제거(스택)
+        //입력된 문자열에서 소괄호() 사이에 존재하는 모든 문자를 제거하고 남은 문자만 출력하는 프로그램 작성
+        var str = '(A(BC)D)EF(G(H)(IJ)K)LM(N)'
+        solution1 = (str) => {
+            var answer
+            var stack = []
+            for(let x of str){
+                if(x===')'){//닫는괄호를 만났을때 자기 짝의 여는괄호까지 다 지움
+                    while(stack.pop()!=='('); //pop한것이 여는괄호일때 멈춘다 => 여는괄호를 pop하고 나면 멈춘다.
+                }
+                else stack.push(x);
+            }
+            answer=stack.join('')
+            return answer
+        }
+        console.log(solution1(str))
+    </script>
+</body>
+</html>
